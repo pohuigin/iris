@@ -56,8 +56,8 @@ help,sswfl.fl
 ;		flrxcen=[flrxcen,reform(thispos[1,*]/60.)]
 ;		flrycen=[flrycen,reform(thispos[0,*]/60.)]
 		
-		flrxcen=float(sswfl.fl.required.EVENT_COORD1)
-		flrycen=float(sswfl.fl.required.EVENT_COORD2)
+		flrxcen=[flrxcen,float(sswfl.fl.required.EVENT_COORD1)]
+		flrycen=[flrycen,float(sswfl.fl.required.EVENT_COORD2)]
 		
 ;		flrcls=[flrcls,sswfl.fl.optional.FL_GOESCLS]
 		flrcls=[flrcls,strtrim(fix(sswfl.fl.optional.FL_PEAKFLUX),2)]
@@ -73,7 +73,7 @@ help,sswfl.fl
 	flrycen=flrycen[1:*]
 	flrcls=flrcls[1:*]
 
-	save,flrsttim,flrentim,flrpktim,flrxcen,flrycen,flrcls,file=outpath+'match_iris_fov_flare.res1.sav'
+	save,flrsttim,flrentim,flrpktim,flrxcen,flrycen,flrcls,sswfl,file=outpath+'match_iris_fov_flare.res1.sav'
 	
 endif else restore,outpath+'match_iris_fov_flare.res1.sav'
 
@@ -112,6 +112,7 @@ entim=anytim(STOPTIME)
 xran=float([transpose(X1),transpose(X2)])
 yran=float([transpose(Y1),transpose(Y2)])
 
+stop
 
 nobs=n_elements(OBSID)
 outstruct=replicate(strblank,nobs)
