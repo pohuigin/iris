@@ -112,8 +112,6 @@ entim=anytim(STOPTIME)
 xran=float([transpose(X1),transpose(X2)])
 yran=float([transpose(Y1),transpose(Y2)])
 
-stop
-
 nobs=n_elements(OBSID)
 outstruct=replicate(strblank,nobs)
 
